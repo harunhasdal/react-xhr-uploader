@@ -139,7 +139,7 @@ NamedModulesPlugin.prototype.apply = (compiler) => {
       modules.forEach((module) => {
         if(module.id === null && module.libIdent) {
           const id = module.libIdent({
-            context: this.options.context || compiler.options.context
+            context: compiler.options.context
           });
 
           // Skip CSS files since those go through ExtractTextPlugin
@@ -147,7 +147,7 @@ NamedModulesPlugin.prototype.apply = (compiler) => {
             module.id = id;
           }
         }
-      }, this);
+      });
     });
   });
 };
