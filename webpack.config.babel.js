@@ -7,14 +7,10 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import SystemBellPlugin from 'system-bell-webpack-plugin';
 import Clean from 'clean-webpack-plugin';
 import merge from 'webpack-merge';
-import React from 'react';
-import ReactDOM from 'react-dom/server';
 
 import renderJSX from './lib/render.jsx';
-import App from './demo/App.jsx';
 import pkg from './package.json';
 
-const RENDER_UNIVERSAL = false;
 const TARGET = process.env.npm_lifecycle_event;
 const ROOT_PATH = __dirname;
 const config = {
@@ -180,7 +176,7 @@ if (TARGET === 'gh-pages' || TARGET === 'gh-pages:stats') {
         template: 'lib/index_template.ejs',
         inject: false
       }, renderJSX(
-        __dirname, pkg, RENDER_UNIVERSAL ? ReactDOM.renderToString(<App />) : '')
+        __dirname, pkg)
       )),
       new NamedModulesPlugin(),
       new webpack.optimize.DedupePlugin(),
