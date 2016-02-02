@@ -96,7 +96,6 @@
   ],
   "license": "LICENCE",
   "pre-push": [
-    "test",
     "test:lint"
   ]
 }
