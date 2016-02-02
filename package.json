@@ -94,8 +94,5 @@
     "large-file-upload",
     "react-component"
   ],
-  "license": "LICENCE",
-  "pre-push": [
-    "test:lint"
-  ]
+  "license": "LICENCE"
 }
