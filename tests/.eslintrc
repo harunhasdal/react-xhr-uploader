@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "../.eslintrc"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true,
+    "jasmine": true
+  },
+  "rules": {
+    "no-console": 0,
+    "no-unused-expressions": 0
+  }
+}
