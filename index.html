@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>react-xhr-uploader - ReactJS component for XHR (level 2) file upload</title>
+
+    
+
+    
+
+    
+    <link href="style.17c7ff674d5931b9b3bf.css" rel="stylesheet">
+    
+
+    
+  </head>
+  <body>
+    <header class="header">
+      <div class="grid">
+      
+      <h1>react-xhr-uploader</h1>
+      
+
+      
+      <div class="description">ReactJS component for XHR (level 2) file upload</div>
+      
+      </div>
+    </header>
+    <div class="container">
+      <article>
+        <h2>Demonstration</h2>
+        <section class="demonstration">
+          <div data-reactid=".cflrwudm9s" data-react-checksum="-995250197"><div class="right github-fork-ribbon-wrapper" data-reactid=".cflrwudm9s.0"><div class="github-fork-ribbon" data-reactid=".cflrwudm9s.0.0"><a href="https://github.com/rma-consulting/react-xhr-uploader" data-reactid=".cflrwudm9s.0.0.0">Fork me on GitHub</a></div></div><p data-reactid=".cflrwudm9s.1">Demonstrating the XHR Uploader component</p><div data-reactid=".cflrwudm9s.2"><div style="border:1px solid #CACACA;padding:20px;" data-reactid=".cflrwudm9s.2.0"><div style="border:3px dashed #4A90E2;padding:10px;background-color:#ffffff;cursor:pointer;" data-reactid=".cflrwudm9s.2.0.0"><div style="padding-left:20%;padding-right:20%;text-align:center;" data-reactid=".cflrwudm9s.2.0.0.0"><p data-reactid=".cflrwudm9s.2.0.0.0.0">Drag and drop your files here or pick them from your computer</p><center class="icon-upload icon-large" data-reactid=".cflrwudm9s.2.0.0.0.1"></center></div></div><div data-reactid=".cflrwudm9s.2.0.1"></div><button style="width:100%;margin-top:10px;height:32px;align-self:center;cursor:pointer;background-color:#D9EBFF;border:1px solid #5094E3;font-size:14px;" data-reactid=".cflrwudm9s.2.0.2">Upload</button><input style="display:none;" type="file" data-reactid=".cflrwudm9s.2.0.3"/></div></div></div>
+        </section>
+
+        <h2>Documentation</h2>
+        <section class="documentation">
+          <div><div><h1><span>react-xhr-uploader</span></h1><p><span>React component for uploading files with XMLHTTPRequest v2</span></p><h2><span>Example express server</span></h2><pre><code>const express = require(&#x27;express&#x27;);
+const Busboy = require(&#x27;busboy&#x27;);
+const fs = require(&#x27;fs&#x27;);
+
+const port = 3000;
+const app = express();
+
+app.all(&#x27;/api/uploadfile&#x27;, function(req, res, next) {
+  res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);
+  res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;X-Requested-With, Content-Type&quot;);
+  next();
+ });
+
+app.post(&#x27;/api/uploadfile&#x27;, (req, res) =&gt; {
+  const busboy = new Busboy({ headers: req.headers });
+	busboy.on(&#x27;file&#x27;, function(fieldname, file, filename) {
+		let saveTo = __dirname + &#x27;/uploads/&#x27; + fieldname + &#x27;-&#x27; + filename + Date.now();
+		file.pipe(fs.createWriteStream(saveTo));
+	});
+	busboy.on(&#x27;finish&#x27;, function() {
+		res.end(&#x27;done&#x27;);
+	});
+  res.on(&#x27;close&#x27;, function() {
+    req.unpipe(busboy);
+  });
+	req.pipe(busboy);
+});
+
+app.listen(port, &#x27;0.0.0.0&#x27;, function () {
+  console.log(`Uploader server listening on port ${port}!`);
+});
+</code></pre></div></div>
+        </section>
+      </article>
+    </div>
+
+    
+      <script src="manifest.92f9ffd5c88614d8884a.js"></script>
+    
+      <script src="vendors.20e75ab2dc0ad7e5b9ca.js"></script>
+    
+      <script src="style.17c7ff674d5931b9b3bf.js"></script>
+    
+      <script src="app.c94e153b9b433b915ffc.js"></script>
+    
+  </body>
+</html>
