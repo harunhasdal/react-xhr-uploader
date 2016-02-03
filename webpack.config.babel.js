@@ -8,7 +8,6 @@ import SystemBellPlugin from 'system-bell-webpack-plugin';
 import Clean from 'clean-webpack-plugin';
 import merge from 'webpack-merge';
 
-import renderJSX from './lib/render.jsx';
 import pkg from './package.json';
 
 const TARGET = process.env.npm_lifecycle_event;
@@ -94,7 +93,7 @@ if (TARGET === 'start') {
         template: 'lib/index_template.ejs',
 
         inject: false
-      }, renderJSX(__dirname, pkg))),
+      })),
       new webpack.HotModuleReplacementPlugin()
     ],
     module: {
@@ -175,9 +174,7 @@ if (TARGET === 'gh-pages' || TARGET === 'gh-pages:stats') {
         title: pkg.name + ' - ' + pkg.description,
         template: 'lib/index_template.ejs',
         inject: false
-      }, renderJSX(
-        __dirname, pkg)
-      )),
+      })),
       new NamedModulesPlugin(),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
