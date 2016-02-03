@@ -18,7 +18,11 @@
     <header class="header">
       <div class="grid">
       
+      <h1>react-xhr-uploader</h1>
+      
 
+      
+      <div class="description">ReactJS component for XHR (level 2) file upload</div>
       
       </div>
     </header>
@@ -31,19 +35,50 @@
 
         <h2>Documentation</h2>
         <section class="documentation">
-          
+          <div><div><h1><span>React XHR Uploader</span></h1><p><span>React component for uploading files with XMLHTTPRequest v2</span></p><p><span>Check full documentation with examples at </span><a href="https://rma-consulting.github.io/react-xhr-uploader"><span>https://rma-consulting.github.io/react-xhr-uploader</span></a></p><p><span>Pull requests are welcome.</span></p><h2><span>How to run/develop locally</span></h2><p><span>Use </span><code>npm start</code><span> to run the webpack development server at localhost:8080. Hot module replacement is enabled.</span></p><p><span>Use </span><code>npm test</code><span> to run the tests. Use </span><code>npm test:tdd</code><span> to run the tests continuously in watch mode.</span></p><p><span>Use </span><code>npm run test:lint</code><span> to run ESLint checks.</span></p><h2><span>Example express server</span></h2><p><span>You will need a server that would accept post requests for multipart file uploads. Below is a sample express server to test out the examples.</span></p><pre><code>const express = require(&#x27;express&#x27;);
+const Busboy = require(&#x27;busboy&#x27;);
+const fs = require(&#x27;fs&#x27;);
+
+const port = 3000;
+const app = express();
+
+app.all(&#x27;/api/uploadfile&#x27;, function(req, res, next) {
+  res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);
+  res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;X-Requested-With, Content-Type&quot;);
+  next();
+ });
+
+app.post(&#x27;/api/uploadfile&#x27;, (req, res) =&gt; {
+  const busboy = new Busboy({ headers: req.headers });
+	busboy.on(&#x27;file&#x27;, function(fieldname, file, filename) {
+		let saveTo = __dirname + &#x27;/uploads/&#x27; + fieldname + &#x27;-&#x27; + filename + Date.now();
+		file.pipe(fs.createWriteStream(saveTo));
+	});
+	busboy.on(&#x27;finish&#x27;, function() {
+		res.end(&#x27;done&#x27;);
+	});
+  res.on(&#x27;close&#x27;, function() {
+    req.unpipe(busboy);
+  });
+	req.pipe(busboy);
+});
+
+app.listen(port, &#x27;0.0.0.0&#x27;, function () {
+  console.log(`Uploader server listening on port ${port}!`);
+});
+</code></pre></div></div>
         </section>
       </article>
     </div>
 
     
-      <script src="manifest.581d387deaa354fb9fc2.js"></script>
+      <script src="manifest.409cffed049e2fbe3c94.js"></script>
     
       <script src="vendors.20e75ab2dc0ad7e5b9ca.js"></script>
     
       <script src="style.17c7ff674d5931b9b3bf.js"></script>
     
-      <script src="app.ffee63ea4b0563ee6b0e.js"></script>
+      <script src="app.80512804a2ca3a6e5b8b.js"></script>
     
   </body>
 </html>
