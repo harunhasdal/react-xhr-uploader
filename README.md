@@ -6,7 +6,7 @@ Check full documentation with examples at [https://rma-consulting.github.io/reac
 
 Pull requests are welcome.
 
-## How to run/develop locally
+### How to run/develop locally
 
 Use `npm start` to run the webpack development server at localhost:8080. Hot module replacement is enabled.
 
@@ -14,7 +14,7 @@ Use `npm test` to run the tests. Use `npm test:tdd` to run the tests continuousl
 
 Use `npm run test:lint` to run ESLint checks.
 
-## Example express server
+### Example express server
 
 You will need a server that would accept post requests for multipart file uploads. Below is a sample express server to test out the examples.
 
