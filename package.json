@@ -21,10 +21,6 @@
     "postpublish": "npm run gh-pages && npm run gh-pages:deploy"
   },
   "main": "dist-modules",
-  "peerDependencies": {
-    "react": "0.14.x",
-    "react-dom": "0.14.x"
-  },
   "devDependencies": {
     "babel-cli": "^6.4.5",
     "babel-core": "^6.4.5",
