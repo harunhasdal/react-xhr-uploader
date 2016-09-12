@@ -6,9 +6,9 @@
   "version": "0.2.1",
   "scripts": {
     "start": "webpack-dev-server",
-    "test": "karma start",
-    "test:tdd": "karma start --auto-watch --no-single-run",
     "test:lint": "eslint . --ext .js --ext .jsx",
+    "test": "mocha --require tests/setup.js --compilers js:node_modules/babel-core/register tests/**/*.spec.js",
+    "test:watch": "npm test -- -w",
     "gh-pages": "webpack",
     "gh-pages:deploy": "gh-pages -d gh-pages",
     "gh-pages:stats": "webpack --profile --json > stats.json",
@@ -21,6 +21,9 @@
     "postpublish": "npm run gh-pages && npm run gh-pages:deploy"
   },
   "main": "dist-modules",
+  "peerDependencies": {
+    "react": "^15.0.0"
+  },
   "devDependencies": {
     "babel-cli": "^6.4.5",
     "babel-core": "^6.4.5",
@@ -33,6 +36,7 @@
     "chai": "^3.5.0",
     "clean-webpack-plugin": "^0.1.7",
     "css-loader": "^0.23.1",
+    "enzyme": "^2.4.1",
     "eslint": "^1.10.3",
     "eslint-loader": "^1.2.1",
     "eslint-plugin-react": "^3.16.1",
@@ -44,17 +48,7 @@
     "html-webpack-plugin": "^2.7.2",
     "isparta-instrumenter-loader": "^1.0.0",
     "json-loader": "^0.5.4",
-    "karma": "^0.13.19",
-    "karma-chai": "^0.1.0",
-    "karma-coverage": "^0.5.3",
-    "karma-es6-shim": "^0.2.3",
-    "karma-mocha": "^0.2.1",
-    "karma-phantomjs-launcher": "^1.0.0",
-    "karma-phantomjs-shim": "^1.2.0",
-    "karma-sourcemap-loader": "^0.3.7",
-    "karma-spec-reporter": "0.0.23",
-    "karma-webpack": "^1.7.0",
-    "mocha": "^2.4.4",
+    "mocha": "^3.0.2",
     "phantomjs-polyfill": "0.0.1",
     "phantomjs-prebuilt": "^2.1.3",
     "purecss": "^0.6.0",
@@ -67,7 +61,7 @@
     "sync-exec": "^0.6.2",
     "system-bell-webpack-plugin": "^1.0.0",
     "url-loader": "^0.5.7",
-    "webpack": "^1.12.12",
+    "webpack": "^1.13.2",
     "webpack-dev-server": "^1.14.1",
     "webpack-merge": "^0.7.3"
   },
