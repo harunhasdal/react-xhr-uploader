@@ -92,7 +92,6 @@ if (TARGET === 'start') {
       new HtmlWebpackPlugin(Object.assign({}, {
         title: pkg.name + ' - ' + pkg.description,
         template: 'lib/index_template.ejs',
-
         inject: false
       }, renderJSX(__dirname, pkg))),
       new webpack.HotModuleReplacementPlugin()
@@ -116,12 +115,10 @@ if (TARGET === 'start') {
     },
     devServer: {
       historyApiFallback: true,
-      hot: true,
-      inline: true,
       progress: true,
       host: process.env.HOST,
       port: process.env.PORT,
-      stats: 'errors-only'
+      stats: 'info'
     }
   });
 }

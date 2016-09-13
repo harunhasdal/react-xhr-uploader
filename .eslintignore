@@ -2,4 +2,4 @@ gh-pages/
 dist-modules/
 dist/
 build/
-
+node_modules/
