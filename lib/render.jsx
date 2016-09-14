@@ -10,7 +10,6 @@ export default function (rootPath, context, template) {
   const demoTemplate = template || '';
   const readme = fs.readFileSync(path.join(rootPath, 'README.md'), 'utf8');
   const renderedMarkup = remark().use(reactRenderer).process(readme);
-  // console.log(renderedMarkup);
   return {
     name: context.name,
     description: context.description,

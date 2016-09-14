@@ -1,10 +1,13 @@
+html {
+  font-size: 62.5%;
+}
 body {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 14px;
+  font-size: 1.4em;
   line-height: 1.42857143;
   color: #333;
   background-color: #fff;
-  margin: 0 20px;
+  margin: 0;
 }
 
 ul {
@@ -39,20 +42,12 @@ h2 {
   text-align: center;
 }
 
-.github-fork-ribbon {
-    position: fixed;
-
-    letter-spacing: 0.01em;
-}
-
 article {
-    display: block !important;
-
-    margin-top: 6em;
-    margin-left: auto;
-    margin-right: auto;
-
-    max-width: 768px;
+  display: block !important;
+  margin-top: 6em;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 768px;
 }
 
 article section {
@@ -71,11 +66,8 @@ pre {
 article .description {
     margin: 1em;
     padding: 1em;
-
     max-width: 60em;
-
     background: #fafafa;
-
     border: 0.1em solid #eee;
 }
 
@@ -95,10 +87,56 @@ a {
 .header {
   color: white;
   width: 100%;
+  min-height: 10em;
   text-align: center;
+  overflow: hidden;
   background-image:linear-gradient(#2ea3f2, #003142);
 }
 
+.github-fork-ribbon-wrapper {
+  width: 15em;
+  height: 15em;
+  position: absolute;
+  overflow: hidden;
+  top: 0px;
+  right: 0px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.github-fork-ribbon {
+  position: absolute;
+  padding: 2px 0px;
+  background-color: rgb(0, 153, 0);
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.14902));
+  box-shadow: rgba(0, 0, 0, 0.498039) 0px 2px 3px 0px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  font-size: 1.3rem;
+  line-height: normal;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  z-index: 9999;
+  pointer-events: auto;
+  top: 4.2rem;
+  right: -4.3rem;
+  transform: rotate(45deg);
+}
+
+.github-fork-ribbon a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  text-shadow: rgba(0, 0, 0, 0.498039) 0px -1px;
+  text-align: center;
+  width: 200px;
+  line-height: 20px;
+  display: inline-block;
+  padding: 2px 0px;
+  border-width: 1px 0px;
+  border-style: dotted;
+  border-color: rgba(255, 255, 255, 0.701961);
+}
 .grid {
   background-color: transparent;
   background-image: linear-gradient(0deg, transparent 24%,

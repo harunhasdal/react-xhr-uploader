@@ -33,8 +33,6 @@ const CSS_PATHS = [
 const STYLE_ENTRIES = [
   'purecss',
   'highlight.js/styles/github.css',
-  'react-ghfork/gh-fork-ribbon.ie.css',
-  'react-ghfork/gh-fork-ribbon.css',
   './demo/normalize.css',
   './demo/main.css'
 ];
@@ -91,6 +89,8 @@ if (TARGET === 'start') {
       }),
       new HtmlWebpackPlugin(Object.assign({}, {
         title: `${pkg.name} - ${pkg.description}`,
+        githubUser: `${pkg.user}`,
+        githubProjectName: `${pkg.name}`,
         template: 'lib/index_template.ejs',
         inject: false
       }, renderJSX(__dirname, pkg)))
@@ -169,6 +169,8 @@ if (TARGET === 'gh-pages' || TARGET === 'gh-pages:stats') {
       }),
       new HtmlWebpackPlugin(Object.assign({}, {
         title: `${pkg.name} - ${pkg.description}`,
+        githubUser: `${pkg.user}`,
+        githubProjectName: `${pkg.name}`,
         template: 'lib/index_template.ejs',
         inject: false
       }, renderJSX(__dirname, pkg))),
