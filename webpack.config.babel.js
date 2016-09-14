@@ -90,11 +90,10 @@ if (TARGET === 'start') {
         'process.env.NODE_ENV': '"development"'
       }),
       new HtmlWebpackPlugin(Object.assign({}, {
-        title: pkg.name + ' - ' + pkg.description,
+        title: `${pkg.name} - ${pkg.description}`,
         template: 'lib/index_template.ejs',
         inject: false
-      }, renderJSX(__dirname, pkg))),
-      new webpack.HotModuleReplacementPlugin()
+      }, renderJSX(__dirname, pkg)))
     ],
     module: {
       loaders: [

@@ -1,64 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import ReactCSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup';
-
-const defaultStyles = {
-  root: {
-    border: '1px solid #CACACA',
-    padding: 20
-  },
-  dropTargetStyle: {
-    border: '3px dashed #4A90E2',
-    padding: 10,
-    backgroundColor: '#ffffff',
-    cursor: 'pointer'
-  },
-  dropTargetActiveStyle: {
-    backgroundColor: '#ccffcc'
-  },
-  placeHolderStyle: {
-    paddingLeft: '20%',
-    paddingRight: '20%',
-    textAlign: 'center'
-  },
-  uploadButtonStyle: {
-    width: '100%',
-    marginTop: 10,
-    height: 32,
-    alignSelf: 'center',
-    cursor: 'pointer',
-    backgroundColor: '#D9EBFF',
-    border: '1px solid #5094E3',
-    fontSize: 14
-  },
-  fileset: {
-    marginTop: 10,
-    paddingTop: 10,
-    paddingBottom: 10,
-    borderTop: '1px solid #CACACA'
-  },
-  fileDetails: {
-    paddingTop: 10,
-    display: 'flex',
-    alignItems: 'flex-start'
-  },
-  fileName: {
-    flexGrow: '8'
-  },
-  fileSize: {
-    'float': 'right',
-    flexGrow: '2',
-    alignSelf: 'flex-end'
-  },
-  removeButton: {
-    alignSelf: 'flex-end'
-  },
-  progress: {
-    marginTop: 10,
-    width: '100%',
-    height: 16,
-    WebkitAppearance: 'none'
-  }
-};
+import defaultStyles from './styles';
 
 class XHRUploader extends Component {
 
@@ -76,7 +18,6 @@ class XHRUploader extends Component {
     this.onUploadButtonClick = this.onUploadButtonClick.bind(this);
     this.onFileSelect = this.onFileSelect.bind(this);
     this.onDragEnter = this.onDragEnter.bind(this);
-    this.onDragOver = this.onDragOver.bind(this);
     this.onDragLeave = this.onDragLeave.bind(this);
     this.onDrop = this.onDrop.bind(this);
   }
@@ -266,7 +207,6 @@ class XHRUploader extends Component {
     if (this.state.isActive) {
       dropTargetStyle = Object.assign({}, dropTargetStyle, styles.dropTargetActiveStyle);
     }
-
     return (
       <div
         style={dropTargetStyle}
@@ -324,7 +264,7 @@ class XHRUploader extends Component {
     const {styles} = this.props;
     const displayButton = !this.props.auto;
     if (displayButton) {
-      return <button style={styles.uploadButtonStyle} onClick={this.upload}>{this.props.buttonLabel}</button>;
+      return <button style={styles.uploadButtonStyle} onClick={this.onClick}>{this.props.buttonLabel}</button>;
     }
     return null;
   }
@@ -342,10 +282,10 @@ class XHRUploader extends Component {
     const {styles} = this.props;
     return (
       <div style={styles.root}>
-        {this.renderDropTarget}
-        {this.renderFileSet}
-        {this.renderButton}
-        {this.renderInput}
+        {this.renderDropTarget()}
+        {this.renderFileSet()}
+        {this.renderButton()}
+        {this.renderInput()}
       </div>
     );
   }
@@ -362,7 +302,7 @@ XHRUploader.propTypes = {
   maxFiles: PropTypes.number,
   clearTimeOut: PropTypes.number,
   filesetTransitionName: PropTypes.string,
-  styles: PropTypes.shape
+  styles: PropTypes.shape({})
 };
 
 XHRUploader.defaultProps = {
