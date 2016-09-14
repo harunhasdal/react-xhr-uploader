@@ -8,7 +8,11 @@ const Demo = () => (
     <article>
       <p>Default usage comes up with an upload button for manual instantiation of the upload and supports one file.</p>
       <pre style={{fontSize: 10}}>
-      {`<XHRUploader url='${UPLOAD_URL}' />`}
+      {`
+        <XHRUploader
+          url='${UPLOAD_URL}'
+        />
+      `}
       </pre>
       <XHRUploader url={UPLOAD_URL} />
     </article>
@@ -18,10 +22,10 @@ const Demo = () => (
       <p> property to get rid of the upload button.</p>
       <pre style={{fontSize: 10}}>
         {`
-<XHRUploader
-url='${UPLOAD_URL}'
-auto
-/>
+          <XHRUploader
+            url='${UPLOAD_URL}'
+            auto
+          />
         `}
       </pre>
       <XHRUploader url={UPLOAD_URL} auto />
@@ -30,11 +34,11 @@ auto
       <p>You can enable multiple file support with </p><pre>maxFiles</pre><p> property</p>
       <pre style={{fontSize: 10}}>
         {`
-<XHRUploader
-url='${UPLOAD_URL}'
-auto
-maxFiles={5}
-/>
+          <XHRUploader
+            url='${UPLOAD_URL}'
+            auto
+            maxFiles={5}
+          />
         `}
       </pre>
       <XHRUploader url={UPLOAD_URL} auto maxFiles={5} />
@@ -43,13 +47,13 @@ maxFiles={5}
       <p>You can enable chunked file upload with</p><pre>chunks</pre> and <pre>chunkSize</pre> <p>properties</p>
       <pre style={{fontSize: 10}}>
     {`
-<XHRUploader
-url='${UPLOAD_URL}'
-auto
-maxFiles='1'
-chunks
-chunkSize='512 * 1024'
-/>
+      <XHRUploader
+        url='${UPLOAD_URL}'
+        auto
+        maxFiles='1'
+        chunks
+        chunkSize='512 * 1024'
+      />
     `}
       </pre>
       <XHRUploader
