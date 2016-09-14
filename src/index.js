@@ -9,11 +9,6 @@ class XHRUploader extends Component {
     this.state = {items: []};
     this.activeDrag = 0;
     this.xhrs = [];
-    // this.renderInput = this.renderInput.bind(this);
-    // this.renderButton = this.renderButton.bind(this);
-    // this.renderFileSet = this.renderFileSet.bind(this);
-    // this.renderDropTarget = this.renderDropTarget.bind(this);
-    // this.filesToItems = this.filesToItems.bind(this);
     this.onClick = this.onClick.bind(this);
     this.onUploadButtonClick = this.onUploadButtonClick.bind(this);
     this.onFileSelect = this.onFileSelect.bind(this);
@@ -39,20 +34,17 @@ class XHRUploader extends Component {
     });
   }
 
-  onDragEnter(e) {
-    e.preventDefault();
+  onDragEnter() {
     this.activeDrag += 1;
     this.setState({isActive: this.activeDrag > 0});
   }
 
-  static onDragOver(e) {
+  onDragOver(e) {
     e.preventDefault();
-    e.stopPropagation();
     return false;
   }
 
-  onDragLeave(e) {
-    e.preventDefault();
+  onDragLeave() {
     this.activeDrag -= 1;
     if (this.activeDrag === 0) {
       this.setState({isActive: false});
@@ -62,12 +54,10 @@ class XHRUploader extends Component {
   onDrop(e) {
     e.preventDefault();
     this.activeDrag = 0;
-    this.setState({isActive: false});
-
     const droppedFiles = e.dataTransfer ? e.dataTransfer.files : [];
     const items = this.filesToItems(droppedFiles);
 
-    this.setState({items}, () => {
+    this.setState({isActive: false, items}, () => {
       if (this.props.auto) {
         this.upload();
       }
