@@ -128,6 +128,16 @@ const Demo = () => (
           };
         `}
       </pre>
+      <br />
+      <h3>Styling upload action controls</h3>
+      <p>For upload action controls, supply the following props as class names:</p>
+      <pre>cancelIconClass</pre><pre>completeIconClass</pre><pre>uploadIconClass</pre>
+      <p>If the above class names are not provided, default Font Awesome classes, e.g. 'fa fa-close', are stored.</p>
+      <p>You will need to install FontAwesome if you would like to use their icons. </p>
+      <br />
+      <h3>Styling progress bar</h3>
+      <p>The upload progress bar is styled as HTML5 native progress bar of the host browser. To customise it, supply the following class name:</p>
+      <pre>progressClass</pre>
     </article>
   </div>
 );

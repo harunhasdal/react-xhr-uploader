@@ -192,7 +192,7 @@ class XHRUploader extends Component {
   }
 
   renderDropTarget() {
-    const styles = this.props.styles;
+    const {styles, uploadIconClass} = this.props;
     let dropTargetStyle = styles.dropTargetStyle;
     if (this.state.isActive) {
       dropTargetStyle = Object.assign({}, dropTargetStyle, styles.dropTargetActiveStyle);
@@ -207,37 +207,42 @@ class XHRUploader extends Component {
         onDrop={this.onDrop}>
         <div style={styles.placeHolderStyle}>
           <p>{this.props.dropzoneLabel}</p>
-          <center className="icon-upload icon-large" />
+          <i className={uploadIconClass}></i>
         </div>
+        {this.renderFileSet()}          
       </div>
     );
   }
 
   renderFileSet() {
     const items = this.state.items;
-    const transitionName = this.props.filesetTransitionName;
+    const {progressClass, filesetTransitionName: transitionName} = this.props;
     if (items.length > 0) {
-      const {styles} = this.props;
+      const {styles, cancelIconClass, completeIconClass} = this.props;
       const progress = this.state.progress;
-
+      const cancelledItems = items.filter(item => item.cancelled === true);
+      const filesetStyle = (items.length === cancelledItems.length) ? {display: 'none'} : styles.fileset;
       return (
         <ReactCSSTransitionGroup component="div" transitionName={transitionName} transitionEnterTimeout={0} transitionLeaveTimeout={0}>
-          <div style={styles.fileset}>
+          <div style={filesetStyle}>
           {
             items.filter(item => !item.cancelled).map((item) => {
               const file = item.file;
               const sizeInMB = (file.size / (1024 * 1024)).toPrecision(2);
-              const actionButtonClass = item.progress < 100 ? 'icon-cancel-circle icon-button icon-red' : 'icon-checkmark icon-button icon-green';
+              const iconClass = item.progress < 100 ? cancelIconClass : completeIconClass;
               return (
                 <div key={item.index}>
                   <div style={styles.fileDetails}>
                     <span className="icon-file icon-large">&nbsp;</span>
                     <span style={styles.fileName}>{`${file.name}, ${file.type}`}</span>
                     <span style={styles.fileSize}>{`${sizeInMB} Mb`}</span>
-                    <span style={styles.removeButton} className={actionButtonClass} onClick={() => this.cancelFile(item.index)}></span>
+                    <i className={iconClass} style={{cursor: 'pointer'}} onClick={() => this.cancelFile(item.index)}></i>
                   </div>
                   <div>
-                    <progress style={styles.progress} min="0" max="100" value={item.progress}>{item.progress}%</progress>
+                    <progress
+                      style={progressClass ? {} : styles.progress}
+                      className={progressClass} min="0" max="100"
+                      value={item.progress}>{item.progress}%</progress>
                   </div>
                 </div>
               );
@@ -254,7 +259,7 @@ class XHRUploader extends Component {
     const {styles} = this.props;
     const displayButton = !this.props.auto;
     if (displayButton) {
-      return <button style={styles.uploadButtonStyle} onClick={this.onClick}>{this.props.buttonLabel}</button>;
+      return <button style={styles.uploadButtonStyle} onClick={this.onUploadButtonClick}>{this.props.buttonLabel}</button>;
     }
     return null;
   }
@@ -273,7 +278,6 @@ class XHRUploader extends Component {
     return (
       <div style={styles.root}>
         {this.renderDropTarget()}
-        {this.renderFileSet()}
         {this.renderButton()}
         {this.renderInput()}
       </div>
@@ -292,7 +296,11 @@ XHRUploader.propTypes = {
   maxFiles: PropTypes.number,
   clearTimeOut: PropTypes.number,
   filesetTransitionName: PropTypes.string,
-  styles: PropTypes.shape({})
+  styles: PropTypes.shape({}),
+  cancelIconClass: PropTypes.string,
+  completeIconClass: PropTypes.string,
+  uploadIconClass: PropTypes.string,
+  progressClass: PropTypes.string
 };
 
 XHRUploader.defaultProps = {
@@ -309,7 +317,9 @@ XHRUploader.defaultProps = {
   clearTimeOut: 3000,
   filesetTransitionName: 'fileset',
   styles: defaultStyles,
-  debug: false
+  cancelIconClass: 'fa fa-close',
+  completeIconClass: 'fa fa-check',
+  uploadIconClass: 'fa fa-upload'
 };
 
 export default XHRUploader;

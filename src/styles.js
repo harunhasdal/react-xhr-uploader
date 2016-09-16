@@ -1,13 +1,12 @@
-
 const styles = {
   root: {
     border: '1px solid #CACACA',
     padding: 20
   },
   dropTargetStyle: {
-    border: '3px dashed #4A90E2',
+    border: '3px dashed #f2e745',
     padding: 10,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#fefcea',
     cursor: 'pointer'
   },
   dropTargetActiveStyle: {
@@ -24,15 +23,14 @@ const styles = {
     height: 32,
     alignSelf: 'center',
     cursor: 'pointer',
-    backgroundColor: '#D9EBFF',
-    border: '1px solid #5094E3',
+    backgroundColor: '#fefcea',
+    border: '1px solid #f2e745',
     fontSize: 14
   },
   fileset: {
     marginTop: 10,
     paddingTop: 10,
-    paddingBottom: 10,
-    borderTop: '1px solid #CACACA'
+    paddingBottom: 10
   },
   fileDetails: {
     paddingTop: 10,
@@ -51,10 +49,11 @@ const styles = {
     alignSelf: 'flex-end'
   },
   progress: {
+    WebkitAppearance: 'none',
+    appearance: 'none',
     marginTop: 10,
     width: '100%',
-    height: 16,
-    WebkitAppearance: 'none'
+    height: 16
   }
 };
 
