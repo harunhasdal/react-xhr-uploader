@@ -1,47 +1,35 @@
-// import React from 'react';
+import React from 'react';
 import XHRUploader from '../src/index.js';
-// import {shallow} from 'enzyme';
+import {shallow} from 'enzyme';
 import {expect} from 'chai';
 
 describe('XHRUploader component', () => {
   it('should be defined', () => {
     expect(XHRUploader).to.exist;
   });
-  // let instance = null;
+  let wrapper;
   beforeEach(() => {
-    // instance = shallow(<XHRUploader url="/test"/>);
+    wrapper = shallow(<XHRUploader url="/test" />);
   });
-
 
   describe('when rendered into the document', () => {
     it('should render', () => {
-      // expect(instance.equals(XHRUploader)).to.equal(true);
-    });
-
-    it('should have correct defaults', () => {
-      // expect(instance.props.auto).to.equal(false);
-      // expect(instance.props.maxFiles).to.equal(1);
-      // expect(instance.props.maxSize).to.equal(25 * 1024 * 1024);
-      // expect(instance.props.chunks).to.equal(false);
-      // expect(instance.props.encrypt).to.equal(false);
-      // expect(instance.props.debug).to.equal(false);
+      const instance = wrapper.instance();
+      expect(instance).to.be.instanceOf(XHRUploader);
     });
 
     it('should have no items in state initially', () => {
-      // expect(instance.state.items).to.be.empty;
+      expect(wrapper.state().items.length).to.equal(0);
     });
 
     it('should have active state when there is an active drag event', () => {
-      // TestUtils.Simulate.dragEnter(instance.refs.dropTarget);
-      // expect(instance.state.isActive).to.be.true;
-      // TestUtils.Simulate.dragOver(instance.refs.dropTarget);
-      // expect(instance.state.isActive).to.be.true;
-      // TestUtils.Simulate.dragLeave(instance.refs.dropTarget);
-      // expect(instance.state.isActive).to.be.false;
-      // TestUtils.Simulate.dragEnter(instance.refs.dropTarget);
-      // expect(instance.state.isActive).to.be.true;
-      // TestUtils.Simulate.drop(instance.refs.dropTarget);
-      // expect(instance.state.isActive).to.be.false;
+      const dropTarget = wrapper.find('[data-test-id="dropTarget"]');
+      dropTarget.simulate('dragEnter');
+      expect(wrapper.state().isActive).to.equal(true);
+      dropTarget.simulate('dragOver');
+      expect(wrapper.state().isActive).to.equal(true);
+      dropTarget.simulate('dragLeave');
+      expect(wrapper.state().isActive).to.equal(false);
     });
   });
 });

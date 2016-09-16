@@ -40,7 +40,9 @@ class XHRUploader extends Component {
   }
 
   onDragOver(e) {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
     return false;
   }
 
@@ -52,6 +54,9 @@ class XHRUploader extends Component {
   }
 
   onDrop(e) {
+    if (!e) {
+      return;
+    }
     e.preventDefault();
     this.activeDrag = 0;
     const droppedFiles = e.dataTransfer ? e.dataTransfer.files : [];
@@ -199,6 +204,7 @@ class XHRUploader extends Component {
     }
     return (
       <div
+        data-test-id="dropTarget"
         style={dropTargetStyle}
         onClick={this.onClick}
         onDragEnter={this.onDragEnter}
@@ -209,7 +215,7 @@ class XHRUploader extends Component {
           <p>{this.props.dropzoneLabel}</p>
           <i className={uploadIconClass}></i>
         </div>
-        {this.renderFileSet()}          
+        {this.renderFileSet()}
       </div>
     );
   }
