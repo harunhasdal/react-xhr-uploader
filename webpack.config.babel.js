@@ -33,8 +33,6 @@ const CSS_PATHS = [
 const STYLE_ENTRIES = [
   'purecss',
   'highlight.js/styles/github.css',
-  'react-ghfork/gh-fork-ribbon.ie.css',
-  'react-ghfork/gh-fork-ribbon.css',
   './demo/normalize.css',
   './demo/main.css'
 ];
@@ -90,12 +88,12 @@ if (TARGET === 'start') {
         'process.env.NODE_ENV': '"development"'
       }),
       new HtmlWebpackPlugin(Object.assign({}, {
-        title: pkg.name + ' - ' + pkg.description,
+        title: `${pkg.name} - ${pkg.description}`,
+        githubUser: `${pkg.user}`,
+        githubProjectName: `${pkg.name}`,
         template: 'lib/index_template.ejs',
-
         inject: false
-      }, renderJSX(__dirname, pkg))),
-      new webpack.HotModuleReplacementPlugin()
+      }, renderJSX(__dirname, pkg)))
     ],
     module: {
       loaders: [
@@ -116,12 +114,10 @@ if (TARGET === 'start') {
     },
     devServer: {
       historyApiFallback: true,
-      hot: true,
-      inline: true,
       progress: true,
       host: process.env.HOST,
       port: process.env.PORT,
-      stats: 'errors-only'
+      stats: 'info'
     }
   });
 }
@@ -133,14 +129,14 @@ NamedModulesPlugin.prototype.apply = (compiler) => {
   compiler.plugin('compilation', (compilation) => {
     compilation.plugin('before-module-ids', (modules) => {
       modules.forEach((module) => {
-        if(module.id === null && module.libIdent) {
+        if (module.id === null && module.libIdent) {
           const id = module.libIdent({
             context: compiler.options.context
           });
 
           // Skip CSS files since those go through ExtractTextPlugin
-          if(!id.endsWith('.css')) {
-            module.id = id;
+          if (!id.endsWith('.css')) {
+            Object.assign(module, {id});
           }
         }
       });
@@ -172,7 +168,9 @@ if (TARGET === 'gh-pages' || TARGET === 'gh-pages:stats') {
         'process.env.NODE_ENV': '"production"'
       }),
       new HtmlWebpackPlugin(Object.assign({}, {
-        title: pkg.name + ' - ' + pkg.description,
+        title: `${pkg.name} - ${pkg.description}`,
+        githubUser: `${pkg.user}`,
+        githubProjectName: `${pkg.name}`,
         template: 'lib/index_template.ejs',
         inject: false
       }, renderJSX(__dirname, pkg))),
@@ -208,7 +206,7 @@ if (TARGET === 'gh-pages' || TARGET === 'gh-pages:stats') {
 }
 
 // !TARGET === prepush hook for test
-if(TARGET === 'test' || TARGET === 'test:tdd' || !TARGET) {
+if (TARGET === 'test' || TARGET === 'test:tdd' || !TARGET) {
   module.exports = merge(demoCommon, {
     module: {
       preLoaders: [
@@ -264,18 +262,18 @@ const distCommon = {
   ]
 };
 
-if(TARGET === 'dist') {
+if (TARGET === 'dist') {
   module.exports = merge(distCommon, {
     output: {
-      filename: config.filename + '.js'
+      filename: `${config.filename}.js`
     }
   });
 }
 
-if(TARGET === 'dist:min') {
+if (TARGET === 'dist:min') {
   module.exports = merge(distCommon, {
     output: {
-      filename: config.filename + '.min.js'
+      filename: `${config.filename}.min.js`
     },
     plugins: [
       new webpack.optimize.UglifyJsPlugin({
