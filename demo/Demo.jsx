@@ -128,6 +128,17 @@ const Demo = () => (
           };
         `}
       </pre>
+      <p>You do not need to pass in the entire style object in order to modify a particular inline style... E.g. if you need to override only the</p>
+      <pre>root</pre>
+      <p>style, then you can pass your styles object as follows:</p>
+      <pre style={{fontSize: 10}}>{`
+        const myStyles = {root: {border: 'none', padding: 'none'}};
+        <XHRUploader
+          url='${UPLOAD_URL}'
+          styles={myStyles}
+        />
+      `}</pre>
+      <p>XhrUploader will set the default styles above for all properties except for the ones that you override.</p>
       <br />
       <h3>Styling upload action controls</h3>
       <p>For upload action controls, supply the following props as class names:</p>

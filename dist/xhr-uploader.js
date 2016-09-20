@@ -89,12 +89,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	var XHRUploader = function (_Component) {
 	  _inherits(XHRUploader, _Component);
 	
-	  function XHRUploader() {
+	  function XHRUploader(props) {
 	    _classCallCheck(this, XHRUploader);
 	
-	    var _this = _possibleConstructorReturn(this, (XHRUploader.__proto__ || Object.getPrototypeOf(XHRUploader)).call(this));
+	    var _this = _possibleConstructorReturn(this, (XHRUploader.__proto__ || Object.getPrototypeOf(XHRUploader)).call(this, props));
 	
-	    _this.state = { items: [] };
+	    _this.state = { items: [], styles: Object.assign({}, _styles2.default, props.styles) };
 	    _this.activeDrag = 0;
 	    _this.xhrs = [];
 	    _this.onClick = _this.onClick.bind(_this);
@@ -324,9 +324,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'renderDropTarget',
 	    value: function renderDropTarget() {
-	      var _props = this.props;
-	      var styles = _props.styles;
-	      var uploadIconClass = _props.uploadIconClass;
+	      var uploadIconClass = this.props.uploadIconClass;
+	      var styles = this.state.styles;
 	
 	      var dropTargetStyle = styles.dropTargetStyle;
 	      if (this.state.isActive) {
@@ -361,18 +360,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var _this8 = this;
 	
 	      var items = this.state.items;
-	      var _props2 = this.props;
-	      var progressClass = _props2.progressClass;
-	      var transitionName = _props2.filesetTransitionName;
+	      var _props = this.props;
+	      var progressClass = _props.progressClass;
+	      var transitionName = _props.filesetTransitionName;
 	
 	      if (items.length > 0) {
 	        var _ret = function () {
-	          var _props3 = _this8.props;
-	          var styles = _props3.styles;
-	          var cancelIconClass = _props3.cancelIconClass;
-	          var completeIconClass = _props3.completeIconClass;
+	          var _props2 = _this8.props;
+	          var cancelIconClass = _props2.cancelIconClass;
+	          var completeIconClass = _props2.completeIconClass;
+	          var _state = _this8.state;
+	          var progress = _state.progress;
+	          var styles = _state.styles;
 	
-	          var progress = _this8.state.progress;
 	          var cancelledItems = items.filter(function (item) {
 	            return item.cancelled === true;
 	          });
@@ -411,8 +411,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        { style: styles.fileSize },
 	                        sizeInMB + ' Mb'
 	                      ),
-	                      _react2.default.createElement('i', { className: iconClass, style: { cursor: 'pointer' }, onClick: function onClick() {
-	                          return _this8.cancelFile(item.index);
+	                      _react2.default.createElement('i', {
+	                        className: iconClass,
+	                        style: { cursor: 'pointer' },
+	                        onClick: function onClick(e) {
+	                          e.stopPropagation();
+	                          _this8.cancelFile(item.index);
 	                        } })
 	                    ),
 	                    _react2.default.createElement(
@@ -442,7 +446,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'renderButton',
 	    value: function renderButton() {
-	      var styles = this.props.styles;
+	      var styles = this.state.styles;
 	
 	      var displayButton = !this.props.auto;
 	      if (displayButton) {
@@ -473,7 +477,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var styles = this.props.styles;
+	      var styles = this.state.styles;
 	
 	      return _react2.default.createElement(
 	        'div',
@@ -519,7 +523,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  encrypt: false,
 	  clearTimeOut: 3000,
 	  filesetTransitionName: 'fileset',
-	  styles: _styles2.default,
 	  cancelIconClass: 'fa fa-close',
 	  completeIconClass: 'fa fa-check',
 	  uploadIconClass: 'fa fa-upload'
