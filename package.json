@@ -52,11 +52,13 @@
     "highlight.js": "^9.1.0",
     "html-webpack-plugin": "^2.7.2",
     "isparta-instrumenter-loader": "^1.0.0",
+    "jsdom": "9.11.0",
     "json-loader": "^0.5.4",
     "mocha": "^3.0.2",
     "purecss": "^0.6.0",
-    "react": "^15.0.0",
-    "react-addons-test-utils": "^15.3.1",
+    "react": "15.4.2",
+    "react-addons-test-utils": "15.4.2",
+    "react-dom": "15.4.2",
     "react-hot-loader": "^3.0.0-beta.3",
     "remark": "^3.2.2",
     "remark-react": "^1.1.0",
@@ -86,5 +88,6 @@
     "large-file-upload",
     "react-component"
   ],
-  "license": "LICENCE"
+  "license": "LICENCE",
+  "pre-push": []
 }
