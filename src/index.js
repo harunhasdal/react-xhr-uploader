@@ -90,7 +90,8 @@ class XHRUploader extends Component {
     const newItems = [...this.state.items];
     const currentItem = this.state.items[index];
     const newProgressArr = [...currentItem.chunkProgress];
-    const totalProgress = newProgressArr.reduce((a, b) => a + b) / newProgressArr.length;
+    const totalProgress = newProgressArr.reduce((a, b) => a + b) / (newProgressArr.length - 1);
+    // -1 because there is always single chunk for "0" percentage pushed as chunkProgress.push(0) in method filesToItems)
     newProgressArr[chunkIndex] = progress;
     newItems[index] = Object.assign({}, currentItem, {chunkProgress: newProgressArr, progress: totalProgress});
     this.setState({items: newItems}, this.clearIfAllCompleted);
