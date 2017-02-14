@@ -198,7 +198,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var newProgressArr = [].concat(_toConsumableArray(currentItem.chunkProgress));
 	      var totalProgress = newProgressArr.reduce(function (a, b) {
 	        return a + b;
-	      }) / newProgressArr.length;
+	      }) / (newProgressArr.length - 1);
+	      // -1 because there is always single chunk for "0" percentage pushed as chunkProgress.push(0) in method filesToItems)
 	      newProgressArr[chunkIndex] = progress;
 	      newItems[index] = Object.assign({}, currentItem, { chunkProgress: newProgressArr, progress: totalProgress });
 	      this.setState({ items: newItems }, this.clearIfAllCompleted);
