@@ -153,7 +153,7 @@ class XHRUploader extends Component {
           progressCallback((e.loaded / e.total) * 100, chunkIndex);
         }
       };
-      xhr.open('POST', this.props.url, true);
+      xhr.open(this.props.method, this.props.url, true);
       xhr.send(formData);
     }
   }
@@ -175,7 +175,7 @@ class XHRUploader extends Component {
         }
       };
 
-      xhr.open('POST', this.props.url, true);
+      xhr.open(this.props.method, this.props.url, true);
       xhr.send(formData);
       this.xhrs[file.index] = xhr;
     }
@@ -300,6 +300,7 @@ class XHRUploader extends Component {
 
 XHRUploader.propTypes = {
   url: PropTypes.string.isRequired,
+  method: PropTypes.string,
   auto: PropTypes.bool,
   fieldName: PropTypes.string,
   buttonLabel: PropTypes.string,
@@ -317,6 +318,7 @@ XHRUploader.propTypes = {
 };
 
 XHRUploader.defaultProps = {
+  method: 'POST',
   auto: false,
   fieldName: 'datafile',
   buttonLabel: 'Upload',
