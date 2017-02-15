@@ -1,7 +1,7 @@
 import React from 'react';
 import XHRUploader from '../src/index.js';
 
-const UPLOAD_URL = 'http://localhost:3000/api/uploadfile';
+const UPLOAD_URL = 'http://localhost:8080/api/uploadfile';
 
 const Demo = () => (
   <div>
@@ -15,6 +15,18 @@ const Demo = () => (
       `}
       </pre>
       <XHRUploader url={UPLOAD_URL} />
+    </article>
+    <article>
+      <p>By default, the component uses POST method for file transver. The component accepts the </p><pre>method</pre><p> property to specify different http method.</p>
+      <pre style={{fontSize: 10}}>
+        {`
+          <XHRUploader
+            url='${UPLOAD_URL}'
+            method='PUT'
+          />
+        `}
+      </pre>
+      <XHRUploader url={UPLOAD_URL} method='PUT' />
     </article>
     <article>
       <p>You can enable automatic upload after drag and drop or file selection with </p>
