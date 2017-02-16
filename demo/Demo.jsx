@@ -17,7 +17,7 @@ const Demo = () => (
       <XHRUploader url={UPLOAD_URL} />
     </article>
     <article>
-      <p>By default, the component uses POST method for file transfer. The component accepts the 
+      <p>By default, the component uses POST method for file transfer. The component accepts the
       </p><pre>method</pre><p> property to specify different http method.</p>
       <pre style={{fontSize: 10}}>
         {`
@@ -28,6 +28,20 @@ const Demo = () => (
         `}
       </pre>
       <XHRUploader url={UPLOAD_URL} method="PUT" />
+    </article>
+    <article>
+      <p>To set up handler handling responses after upload (successful or not) use
+      </p><pre>onLoadComplete</pre><p> property.</p>
+      <p className="alert"><strong>Note:</strong> This property is supported with non-chunked uploads only.</p>
+      <pre style={{fontSize: 10}}>
+        {`
+          <XHRUploader
+            url='${UPLOAD_URL}'
+            onLoadComplete={(response) => console.log(response)}
+          />
+        `}
+      </pre>
+      <XHRUploader url={UPLOAD_URL} onLoadComplete={response => console.log(response)} />
     </article>
     <article>
       <p>You can enable automatic upload after drag and drop or file selection with </p>
