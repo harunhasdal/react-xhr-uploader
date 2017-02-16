@@ -17,7 +17,7 @@ const Demo = () => (
       <XHRUploader url={UPLOAD_URL} />
     </article>
     <article>
-      <p>By default, the component uses POST method for file transver. The component accepts the 
+      <p>By default, the component uses POST method for file transfer. The component accepts the 
       </p><pre>method</pre><p> property to specify different http method.</p>
       <pre style={{fontSize: 10}}>
         {`
