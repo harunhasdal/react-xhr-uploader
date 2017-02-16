@@ -274,7 +274,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            progressCallback(e.loaded / e.total * 100, chunkIndex);
 	          }
 	        };
-	        xhr.open('POST', this.props.url, true);
+	        xhr.open(this.props.method, this.props.url, true);
 	        xhr.send(formData);
 	      }
 	    }
@@ -297,7 +297,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          }
 	        };
 	
-	        xhr.open('POST', this.props.url, true);
+	        xhr.open(this.props.method, this.props.url, true);
 	        xhr.send(formData);
 	        this.xhrs[file.index] = xhr;
 	      }
@@ -487,6 +487,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	XHRUploader.propTypes = {
 	  url: _react.PropTypes.string.isRequired,
+	  method: _react.PropTypes.string,
 	  auto: _react.PropTypes.bool,
 	  fieldName: _react.PropTypes.string,
 	  buttonLabel: _react.PropTypes.string,
@@ -504,6 +505,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	XHRUploader.defaultProps = {
+	  method: 'POST',
 	  auto: false,
 	  fieldName: 'datafile',
 	  buttonLabel: 'Upload',
