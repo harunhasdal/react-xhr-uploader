@@ -27,7 +27,7 @@ const Demo = () => (
           />
         `}
       </pre>
-      <XHRUploader url={UPLOAD_URL} method='PUT' />
+      <XHRUploader url={UPLOAD_URL} method="PUT" />
     </article>
     <article>
       <p>You can enable automatic upload after drag and drop or file selection with </p>
