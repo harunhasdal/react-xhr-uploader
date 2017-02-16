@@ -17,6 +17,19 @@ const Demo = () => (
       <XHRUploader url={UPLOAD_URL} />
     </article>
     <article>
+      <p>By default, the component uses POST method for file transfer. The component accepts the 
+      </p><pre>method</pre><p> property to specify different http method.</p>
+      <pre style={{fontSize: 10}}>
+        {`
+          <XHRUploader
+            url='${UPLOAD_URL}'
+            method='PUT'
+          />
+        `}
+      </pre>
+      <XHRUploader url={UPLOAD_URL} method="PUT" />
+    </article>
+    <article>
       <p>You can enable automatic upload after drag and drop or file selection with </p>
       <pre>auto</pre>
       <p> property to get rid of the upload button.</p>
