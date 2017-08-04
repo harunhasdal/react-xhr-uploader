@@ -20,7 +20,7 @@
     "prepublish": "npm run dist:modules",
     "postpublish": "npm run gh-pages && npm run gh-pages:deploy"
   },
-  "main": "dist-modules",
+  "main": "dist-modules/index.js",
   "peerDependencies": {
     "react": "^15.0.0"
   },
