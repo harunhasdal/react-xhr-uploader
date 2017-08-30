@@ -263,3 +263,7 @@ a {
 .menu__all-charts {
   color: #fba600 !important;
 }
+
+.alert {
+  color: firebrick;
+}

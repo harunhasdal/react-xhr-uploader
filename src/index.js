@@ -167,6 +167,9 @@ class XHRUploader extends Component {
       formData.append(this.props.fieldName, file, file.name);
 
       xhr.onload = () => {
+        if (this.props.onLoadComplete) {
+          this.props.onLoadComplete(xhr.response);
+        }
         progressCallback(100);
       };
 
@@ -315,7 +318,8 @@ XHRUploader.propTypes = {
   cancelIconClass: PropTypes.string,
   completeIconClass: PropTypes.string,
   uploadIconClass: PropTypes.string,
-  progressClass: PropTypes.string
+  progressClass: PropTypes.string,
+  onLoadComplete: PropTypes.func
 };
 
 XHRUploader.defaultProps = {
