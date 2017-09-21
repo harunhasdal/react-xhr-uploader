@@ -235,31 +235,36 @@ class XHRUploader extends Component {
           <div style={filesetStyle}>
           {
             items.filter(item => !item.cancelled).map((item) => {
-              const file = item.file;
-              const sizeInMB = (file.size / (1024 * 1024)).toPrecision(2);
-              const iconClass = item.progress < 100 ? cancelIconClass : completeIconClass;
-              return (
-                <div key={item.index}>
-                  <div style={styles.fileDetails}>
-                    <span className="icon-file icon-large">&nbsp;</span>
-                    <span style={styles.fileName}>{`${file.name}, ${file.type}`}</span>
-                    <span style={styles.fileSize}>{`${sizeInMB} Mb`}</span>
-                    <i
-                      className={iconClass}
-                      style={{cursor: 'pointer'}}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        this.cancelFile(item.index);
-                      }}></i>
+              try{
+                const file = item.file;
+                const sizeInMB = (file.size / (1024 * 1024)).toPrecision(2);
+                const iconClass = item.progress < 100 ? cancelIconClass : completeIconClass;
+                return (
+                  <div key={item.index}>
+                    <div style={styles.fileDetails}>
+                      <span className="icon-file icon-large">&nbsp;</span>
+                      <span style={styles.fileName}>{`${file.name}, ${file.type}`}</span>
+                      <span style={styles.fileSize}>{`${sizeInMB} Mb`}</span>
+                      <i
+                        className={iconClass}
+                        style={{cursor: 'pointer'}}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          this.cancelFile(item.index);
+                        }}></i>
+                    </div>
+                    <div>
+                      <progress
+                        style={progressClass ? {} : styles.progress}
+                        className={progressClass} min="0" max="100"
+                        value={item.progress}>{item.progress}%</progress>
+                    </div>
                   </div>
-                  <div>
-                    <progress
-                      style={progressClass ? {} : styles.progress}
-                      className={progressClass} min="0" max="100"
-                      value={item.progress}>{item.progress}%</progress>
-                  </div>
-                </div>
-              );
+                );
+              } catch(ex) {
+                console.log("React XHR Uploader Size Bug:", ex);
+                return null;
+              }
             })
           }
           </div>
