@@ -261,10 +261,10 @@ class XHRUploader extends Component {
                     </div>
                   </div>
                 );
-              } catch( ex ) {
-                console.log("React XHR Uploader Size Bug:", ex);
+              } catch (ex) {
+                console.log('React XHR Uploader Size Bug:', ex);
                 return null;
-              }
+              } 
             })
           }
           </div>
