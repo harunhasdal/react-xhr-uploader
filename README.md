@@ -1,5 +1,8 @@
 # React XHR Uploader
 
+[![npm version](https://badge.fury.io/js/react-xhr-uploader.svg)](https://badge.fury.io/js/react-xhr-uploader)
+[![Build Status](https://travis-ci.org/rma-consulting/react-xhr-uploader.svg?branch=master)](https://travis-ci.org/rma-consulting/react-xhr-uploader)
+
 React component for uploading files with XMLHTTPRequest v2
 
 Check full documentation with examples at [https://rma-consulting.github.io/react-xhr-uploader](https://rma-consulting.github.io/react-xhr-uploader)
