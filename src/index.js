@@ -118,7 +118,7 @@ class XHRUploader extends Component {
   }
 
   uploadItem(item) {
-    if (this.props.chunks) {
+    if (this.props.chunks && item.file) {
       const BYTES_PER_CHUNK = this.props.chunkSize;
       const SIZE = item.file.size;
 
@@ -234,7 +234,7 @@ class XHRUploader extends Component {
       return (
         <ReactCSSTransitionGroup component="div" transitionName={transitionName} transitionEnterTimeout={0} transitionLeaveTimeout={0}>
           <div style={filesetStyle}>
-            {items.filter(item => !item.cancelled).map(item => {
+            {items.filter(item => !item.cancelled && !!item.file).map(item => {
               const file = item.file;
               const sizeInMB = (file.size / (1024 * 1024)).toPrecision(2);
               const iconClass = item.progress < 100 ? cancelIconClass : completeIconClass;
