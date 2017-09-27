@@ -1,13 +1,21 @@
-import jsdom from 'jsdom';
+require('babel-register');
+const jsdom = require('jsdom').jsdom;
 
-global.document = jsdom.jsdom('<html><body></body></html>');
+// Set up dummy DOM and provide `window` and `document.`
+global.document = jsdom('<!doctype html><html><body></body></html>');
 global.window = document.defaultView;
-global.navigator = window.navigator;
-
-function noop() {
-  return {};
-}
-
-// prevent mocha tests from breaking when trying to require a css file
-require.extensions['.css'] = noop;
-require.extensions['.svg'] = noop;
+const exposedProperties = ['window', 'navigator', 'document'];
+Object.keys(document.defaultView).forEach(property => {
+  if (typeof global[property] === 'undefined') {
+    exposedProperties.push(property);
+    global[property] = document.defaultView[property];
+  }
+});
+global.requestAnimationFrame = function(callback) {
+  setTimeout(callback, 0);
+};
+// Set variables and cookies here
+global.navigator = {
+  userAgent: 'node.js',
+  plugins: []
+};

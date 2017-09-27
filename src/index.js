@@ -1,5 +1,6 @@
-import React, {Component, PropTypes} from 'react';
-import ReactCSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import defaultStyles from './styles';
 
 class XHRUploader extends Component {
