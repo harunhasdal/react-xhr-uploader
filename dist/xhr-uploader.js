@@ -239,7 +239,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function uploadItem(item) {
 	      var _this6 = this;
 	
-	      if (this.props.chunks) {
+	      if (this.props.chunks && item.file) {
 	        var BYTES_PER_CHUNK = this.props.chunkSize;
 	        var SIZE = item.file.size;
 	
@@ -387,7 +387,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            'div',
 	            { style: filesetStyle },
 	            items.filter(function (item) {
-	              return !item.cancelled;
+	              return !item.cancelled && !!item.file;
 	            }).map(function (item) {
 	              var file = item.file;
 	              var sizeInMB = (file.size / (1024 * 1024)).toPrecision(2);
