@@ -3,7 +3,7 @@
   "description": "ReactJS component for XHR (level 2) file upload",
   "author": "Harun Hasdal",
   "user": "rma-consulting",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.config.babel.js --inline --hot",
     "test:lint": "eslint . --ext .js --ext .jsx",
@@ -22,7 +22,8 @@
   },
   "main": "dist-modules/index.js",
   "peerDependencies": {
-    "react": "^15.0.0"
+    "react": "^15.0.0 || ^16.0.0",
+    "react-dom": "^15.0.0 || ^16.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.4.5",
@@ -38,9 +39,10 @@
     "clean-webpack-plugin": "^0.1.7",
     "cross-env": "^2.0.1",
     "css-loader": "^0.25.0",
-    "enzyme": "^2.4.1",
+    "enzyme": "^3.0.0",
+    "enzyme-adapter-react-16": "^1.0.0",
     "eslint": "^3.5.0",
-    "eslint-config-airbnb": "^11.1.0",
+    "eslint-config-prettier": "2.6.0",
     "eslint-loader": "^1.2.1",
     "eslint-plugin-import": "^1.15.0",
     "eslint-plugin-jsx-a11y": "^2.2.2",
@@ -55,11 +57,13 @@
     "jsdom": "9.11.0",
     "json-loader": "^0.5.4",
     "mocha": "^3.0.2",
+    "prop-types": "^15.6.0",
     "purecss": "^0.6.0",
-    "react": "15.4.2",
-    "react-addons-test-utils": "15.4.2",
-    "react-dom": "15.4.2",
+    "react": "^16.0.0",
+    "react-addons-css-transition-group": "^15.6.2",
+    "react-dom": "^16.0.0",
     "react-hot-loader": "^3.0.0-beta.3",
+    "react-test-renderer": "^16.0.0",
     "remark": "^3.2.2",
     "remark-react": "^1.1.0",
     "style-loader": "^0.13.0",
@@ -89,5 +93,6 @@
     "react-component"
   ],
   "license": "LICENCE",
-  "pre-push": []
+  "pre-push": [],
+  "dependencies": {}
 }

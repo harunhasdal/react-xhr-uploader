@@ -1,7 +1,10 @@
 import React from 'react';
 import XHRUploader from '../src/index.js';
-import {shallow} from 'enzyme';
-import {expect} from 'chai';
+import Enzyme, { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import { expect } from 'chai';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('XHRUploader component', () => {
   it('should be defined', () => {

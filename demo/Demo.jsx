@@ -7,8 +7,8 @@ const Demo = () => (
   <div>
     <article>
       <p>Default usage comes up with an upload button for manual instantiation of the upload and supports one file.</p>
-      <pre style={{fontSize: 10}}>
-      {`
+      <pre style={{ fontSize: 10 }}>
+        {`
         <XHRUploader
           url='${UPLOAD_URL}'
         />
@@ -17,9 +17,10 @@ const Demo = () => (
       <XHRUploader url={UPLOAD_URL} />
     </article>
     <article>
-      <p>By default, the component uses POST method for file transfer. The component accepts the 
-      </p><pre>method</pre><p> property to specify different http method.</p>
-      <pre style={{fontSize: 10}}>
+      <p>By default, the component uses POST method for file transfer. The component accepts the</p>
+      <pre>method</pre>
+      <p> property to specify different http method.</p>
+      <pre style={{ fontSize: 10 }}>
         {`
           <XHRUploader
             url='${UPLOAD_URL}'
@@ -33,7 +34,7 @@ const Demo = () => (
       <p>You can enable automatic upload after drag and drop or file selection with </p>
       <pre>auto</pre>
       <p> property to get rid of the upload button.</p>
-      <pre style={{fontSize: 10}}>
+      <pre style={{ fontSize: 10 }}>
         {`
           <XHRUploader
             url='${UPLOAD_URL}'
@@ -44,8 +45,10 @@ const Demo = () => (
       <XHRUploader url={UPLOAD_URL} auto />
     </article>
     <article>
-      <p>You can enable multiple file support with </p><pre>maxFiles</pre><p> property</p>
-      <pre style={{fontSize: 10}}>
+      <p>You can enable multiple file support with </p>
+      <pre>maxFiles</pre>
+      <p> property</p>
+      <pre style={{ fontSize: 10 }}>
         {`
           <XHRUploader
             url='${UPLOAD_URL}'
@@ -57,9 +60,10 @@ const Demo = () => (
       <XHRUploader url={UPLOAD_URL} auto maxFiles={5} />
     </article>
     <article>
-      <p>You can enable chunked file upload with</p><pre>chunks</pre> and <pre>chunkSize</pre> <p>properties</p>
-      <pre style={{fontSize: 10}}>
-    {`
+      <p>You can enable chunked file upload with</p>
+      <pre>chunks</pre> and <pre>chunkSize</pre> <p>properties</p>
+      <pre style={{ fontSize: 10 }}>
+        {`
       <XHRUploader
         url='${UPLOAD_URL}'
         auto
@@ -69,17 +73,15 @@ const Demo = () => (
       />
     `}
       </pre>
-      <XHRUploader
-        url={UPLOAD_URL}
-        auto
-        chunks
-        chunkSize={512 * 1024} />
+      <XHRUploader url={UPLOAD_URL} auto chunks chunkSize={512 * 1024} />
     </article>
     <article>
       <h2>Customising look and feel</h2>
-      <p>The component accepts a </p><pre>style</pre><p> property as a javascript object to override the default styles of the component.</p>
+      <p>The component accepts a </p>
+      <pre>style</pre>
+      <p> property as a javascript object to override the default styles of the component.</p>
       <p>Following is the default styles object the component uses. You can modify this object with your styles and pass in props.</p>
-      <pre style={{fontSize: 10}}>
+      <pre style={{ fontSize: 10 }}>
         {`
           const defaultStyles = {
             root: {
@@ -141,10 +143,13 @@ const Demo = () => (
           };
         `}
       </pre>
-      <p>You do not need to pass in the entire style object in order to modify a particular inline style... E.g. if you need to override only the</p>
+      <p>
+        You do not need to pass in the entire style object in order to modify a particular inline style... E.g. if you need to override only
+        the
+      </p>
       <pre>root</pre>
       <p>style, then you can pass your styles object as follows:</p>
-      <pre style={{fontSize: 10}}>{`
+      <pre style={{ fontSize: 10 }}>{`
         const myStyles = {root: {border: 'none', padding: 'none'}};
         <XHRUploader
           url='${UPLOAD_URL}'
@@ -155,12 +160,17 @@ const Demo = () => (
       <br />
       <h3>Styling upload action controls</h3>
       <p>For upload action controls, supply the following props as class names:</p>
-      <pre>cancelIconClass</pre><pre>completeIconClass</pre><pre>uploadIconClass</pre>
+      <pre>cancelIconClass</pre>
+      <pre>completeIconClass</pre>
+      <pre>uploadIconClass</pre>
       <p>If the above class names are not provided, default Font Awesome classes, e.g. 'fa fa-close', are stored.</p>
       <p>You will need to install FontAwesome if you would like to use their icons. </p>
       <br />
       <h3>Styling progress bar</h3>
-      <p>The upload progress bar is styled as HTML5 native progress bar of the host browser. To customise it, supply the following class name:</p>
+      <p>
+        The upload progress bar is styled as HTML5 native progress bar of the host browser. To customise it, supply the following class
+        name:
+      </p>
       <pre>progressClass</pre>
     </article>
   </div>
