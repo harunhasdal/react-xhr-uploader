@@ -41,7 +41,7 @@ const styles = {
     flexGrow: '8'
   },
   fileSize: {
-    'float': 'right',
+    float: 'right',
     flexGrow: '2',
     alignSelf: 'flex-end'
   },
