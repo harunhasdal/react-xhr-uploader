@@ -70,9 +70,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _reactAddonsCssTransitionGroup = __webpack_require__(12);
+	var _reactTransitionGroup = __webpack_require__(12);
 	
-	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
+	var _reactTransitionGroup2 = _interopRequireDefault(_reactTransitionGroup);
 	
 	var _styles = __webpack_require__(44);
 	
@@ -381,7 +381,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	        var filesetStyle = items.length === cancelledItems.length ? { display: 'none' } : styles.fileset;
 	        return _react2.default.createElement(
-	          _reactAddonsCssTransitionGroup2.default,
+	          _reactTransitionGroup2.default,
 	          { component: 'div', transitionName: transitionName, transitionEnterTimeout: 0, transitionLeaveTimeout: 0 },
 	          _react2.default.createElement(
 	            'div',
@@ -443,7 +443,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          )
 	        );
 	      }
-	      return _react2.default.createElement(_reactAddonsCssTransitionGroup2.default, { component: 'div', transitionName: transitionName, transitionEnterTimeout: 0, transitionLeaveTimeout: 0 });
+	      return _react2.default.createElement(_reactTransitionGroup2.default, { component: 'div', transitionName: transitionName, transitionEnterTimeout: 0, transitionLeaveTimeout: 0 });
 	    }
 	  }, {
 	    key: 'renderButton',
@@ -1732,17 +1732,22 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	/**
-	 * Copyright (c) 2013-present, Facebook, Inc.
-	 *
-	 * This source code is licensed under the MIT license found in the
-	 * LICENSE file in the root directory of this source tree.
-	 */
-	
 	'use strict';
 	
-	module.exports = __webpack_require__(13);
-
+	var _CSSTransitionGroup = __webpack_require__(13);
+	
+	var _CSSTransitionGroup2 = _interopRequireDefault(_CSSTransitionGroup);
+	
+	var _TransitionGroup = __webpack_require__(14);
+	
+	var _TransitionGroup2 = _interopRequireDefault(_TransitionGroup);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	module.exports = {
+	  TransitionGroup: _TransitionGroup2.default,
+	  CSSTransitionGroup: _CSSTransitionGroup2.default
+	};
 
 /***/ }),
 /* 13 */
