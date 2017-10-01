@@ -72,7 +72,8 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.14.1",
-    "webpack-merge": "^0.14.1"
+    "webpack-merge": "^0.14.1",
+    "react-transition-group": "^2.2.0"
   },
   "repository": {
     "type": "git",
