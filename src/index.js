@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ReactCSSTransitionGroup from 'react-transition-group';
+import { CSSTransitionGroup } from 'react-transition-group';
 import defaultStyles from './styles';
 
 class XHRUploader extends Component {
@@ -232,7 +232,12 @@ class XHRUploader extends Component {
       const cancelledItems = items.filter(item => item.cancelled === true);
       const filesetStyle = items.length === cancelledItems.length ? { display: 'none' } : styles.fileset;
       return (
-        <ReactCSSTransitionGroup component="div" transitionName={transitionName} transitionEnterTimeout={0} transitionLeaveTimeout={0}>
+        <CSSTransitionGroup
+          component="div"
+          transitionName={transitionName}
+          transitionEnterTimeout={0}
+          transitionLeaveTimeout={0}
+        >
           <div style={filesetStyle}>
             {items.filter(item => !item.cancelled && !!item.file).map(item => {
               const file = item.file;
@@ -268,11 +273,16 @@ class XHRUploader extends Component {
               );
             })}
           </div>
-        </ReactCSSTransitionGroup>
+        </CSSTransitionGroup>
       );
     }
     return (
-      <ReactCSSTransitionGroup component="div" transitionName={transitionName} transitionEnterTimeout={0} transitionLeaveTimeout={0} />
+      <CSSTransitionGroup
+        component="div"
+        transitionName={transitionName}
+        transitionEnterTimeout={0}
+        transitionLeaveTimeout={0}
+      />
     );
   }
 
