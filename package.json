@@ -3,7 +3,7 @@
   "description": "ReactJS component for XHR (level 2) file upload",
   "author": "Harun Hasdal",
   "user": "rma-consulting",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.config.babel.js --inline --hot",
     "test:lint": "eslint . --ext .js --ext .jsx",
