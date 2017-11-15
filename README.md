@@ -21,7 +21,7 @@ Use `npm run test:lint` to run ESLint checks.
 
 You will need a server that would accept post requests for multipart file uploads. Below is a sample express server to test out the examples.
 
-```
+```js
 const express = require('express');
 const Busboy = require('busboy');
 const fs = require('fs');
