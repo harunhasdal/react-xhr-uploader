@@ -323,6 +323,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return items;
 	    }
 	  }, {
+	    key: 'humanFileSize',
+	    value: function humanFileSize(bytes, si) {
+	      var thresh = si ? 1000 : 1024;
+	      if (Math.abs(bytes) < thresh) {
+	        return bytes + " B";
+	      }
+	      var units = si ? ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'] : ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
+	      var u = -1;
+	      do {
+	        bytes /= thresh;
+	        ++u;
+	      } while (Math.abs(bytes) >= thresh && u < units.length - 1);
+	      return bytes.toFixed(1) + " " + units[u];
+	    }
+	  }, {
 	    key: 'renderDropTarget',
 	    value: function renderDropTarget() {
 	      var uploadIconClass = this.props.uploadIconClass;
@@ -393,7 +408,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	              return !item.cancelled && !!item.file;
 	            }).map(function (item) {
 	              var file = item.file;
-	              var sizeInMB = (file.size / (1024 * 1024)).toPrecision(2);
 	              var iconClass = item.progress < 100 ? cancelIconClass : completeIconClass;
 	              return _react2.default.createElement(
 	                'div',
@@ -414,7 +428,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                  _react2.default.createElement(
 	                    'span',
 	                    { style: styles.fileSize },
-	                    sizeInMB + ' Mb'
+	                    '' + _this8.humanFileSize(file.size)
 	                  ),
 	                  _react2.default.createElement('i', {
 	                    className: iconClass,
