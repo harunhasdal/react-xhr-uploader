@@ -143,6 +143,13 @@ class XHRUploader extends Component {
     if (blob) {
       const formData = new FormData();
       const xhr = new XMLHttpRequest();
+      const data = this.props.formData;
+
+      if(data.length > 0){
+        data.map( d => {
+          formData.append(d.name, d.value);
+        })
+      }
 
       formData.append(this.props.fieldName, blob, `${fileName}-chunk${chunkIndex}`);
 
@@ -163,6 +170,13 @@ class XHRUploader extends Component {
     if (file) {
       const formData = new FormData();
       const xhr = new XMLHttpRequest();
+      const data = this.props.formData;
+
+      if(data.length > 0){
+        data.map( d => {
+          formData.append(d.name, d.value);
+        })
+      }
 
       formData.append(this.props.fieldName, file, file.name);
 
@@ -359,7 +373,11 @@ XHRUploader.propTypes = {
   cancelIconClass: PropTypes.string,
   completeIconClass: PropTypes.string,
   uploadIconClass: PropTypes.string,
-  progressClass: PropTypes.string
+  progressClass: PropTypes.string,
+  formData: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  }))
 };
 
 XHRUploader.defaultProps = {
@@ -378,7 +396,8 @@ XHRUploader.defaultProps = {
   filesetTransitionName: 'fileset',
   cancelIconClass: 'fa fa-close',
   completeIconClass: 'fa fa-check',
-  uploadIconClass: 'fa fa-upload'
+  uploadIconClass: 'fa fa-upload',
+  formData: []
 };
 
 export default XHRUploader;

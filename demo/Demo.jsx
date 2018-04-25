@@ -76,6 +76,29 @@ const Demo = () => (
       <XHRUploader url={UPLOAD_URL} auto chunks chunkSize={512 * 1024} />
     </article>
     <article>
+      <p>Pass more form data with</p>
+      <pre>formData</pre>
+      <pre style={{ fontSize: 10 }}>
+        {`
+        <XHRUploader
+          url='${UPLOAD_URL}'
+          formData={
+            [{
+              name: 'serverPath',
+              value: 'myPath'
+            }, {
+              name: 'id',
+              value: someId
+            }, {
+              ...
+            }]
+          }
+        />
+      `}
+      </pre>
+      <XHRUploader url={UPLOAD_URL} formData={[{name: 'serverPath', value: 'myPath'}]}/>
+    </article>
+    <article>
       <h2>Customising look and feel</h2>
       <p>The component accepts a </p>
       <pre>style</pre>
