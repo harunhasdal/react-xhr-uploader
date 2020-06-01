@@ -2,7 +2,7 @@
   "name": "react-xhr-uploader",
   "description": "ReactJS component for XHR (level 2) file upload",
   "author": "Harun Hasdal",
-  "user": "rma-consulting",
+  "user": "harunhasdal",
   "version": "0.5.0",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.config.babel.js --inline --hot",
