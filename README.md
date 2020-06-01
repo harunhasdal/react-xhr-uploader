@@ -5,7 +5,7 @@
 
 React component for uploading files with XMLHTTPRequest v2
 
-Check full documentation with examples at [https://rma-consulting.github.io/react-xhr-uploader](https://rma-consulting.github.io/react-xhr-uploader)
+Check full documentation with examples at [https://harunhasdal.github.io/react-xhr-uploader](https://harunhasdal.github.io/react-xhr-uploader)
 
 Pull requests are welcome.
 
