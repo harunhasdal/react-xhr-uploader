@@ -54,7 +54,7 @@
     "highlight.js": "^10.4.1",
     "html-webpack-plugin": "^2.7.2",
     "isparta-instrumenter-loader": "^1.0.0",
-    "jsdom": "9.11.0",
+    "jsdom": "16.5.0",
     "json-loader": "^0.5.4",
     "mocha": "^3.0.2",
     "prop-types": "^15.6.0",
